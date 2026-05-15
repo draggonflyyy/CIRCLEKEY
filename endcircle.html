@@ -41,11 +41,11 @@
             right: 40px;
             width: 150px; 
             z-index: 500;
-            transition: transform 0.3s ease; /* Transition pour le grossissement */
+            transition: transform 0.3s ease;
         }
 
         .secret-trigger:hover {
-            transform: scale(1.15); /* Grossit de 15% au survol */
+            transform: scale(1.15);
         }
 
         .secret-trigger img {
@@ -66,11 +66,11 @@
             z-index: 500;
         }
 
-        /* BOUTON OEIL (Positionné sur l'oeil du fond) */
+        /* BOUTON OEIL */
         .eye-button {
             position: absolute;
-            bottom: 125px; /* Ajusté pour monter sur l'oeil */
-            left: 200px;   /* Ajusté pour aller plus à droite sur l'oeil */
+            bottom: 125px; 
+            left: 200px;   
             width: 75px;
             height: 75px;
             border: 1px solid #666;
@@ -78,6 +78,7 @@
             z-index: 500;
             background: rgba(255, 255, 255, 0.05);
             transition: border-color 0.3s;
+            cursor: none !important; /* Pour garder la main perso */
         }
 
         .eye-button:hover {
@@ -95,7 +96,7 @@
         audio {
             position: absolute;
             bottom: 150px;
-            left: 300px; /* Apparaît à droite de l'oeil */
+            left: 300px; 
             filter: invert(100%);
             display: none;
             z-index: 600;
@@ -115,7 +116,7 @@
     <a href="index.html" class="back-link">back</a>
 
     <div class="eye-button" id="toggle-audio">
-        <img src="oeil 4.png">
+        <img src="oeil 4.png" alt=""> 
     </div>
 
     <audio id="player" controls>
