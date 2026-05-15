@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>The End Circle</title>
+    <style>
+        body {
+            background-color: black;
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: none !important; 
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* CURSEUR MAIN */
+        #custom-cursor {
+            position: fixed;
+            width: 80px; 
+            height: auto;
+            pointer-events: none; 
+            z-index: 1000;
+            transform: translate(-10%, -40%); 
+            display: none;
+        }
+
+        /* L'IMAGE DE FOND */
+        .center-image {
+            width: 1100px; 
+            height: auto;
+            pointer-events: none;
+        }
+
+        /* BOUTON SECRET (Haut Droite) */
+        .secret-trigger {
+            position: absolute;
+            top: 40px;
+            right: 40px;
+            width: 150px; 
+            z-index: 500;
+            transition: transform 0.3s ease; /* Transition pour le grossissement */
+        }
+
+        .secret-trigger:hover {
+            transform: scale(1.15); /* Grossit de 15% au survol */
+        }
+
+        .secret-trigger img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* LIEN BACK */
+        .back-link {
+            position: absolute;
+            bottom: 30px;
+            right: 40px;
+            font-family: Arial, sans-serif;
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+            z-index: 500;
+        }
+
+        /* BOUTON OEIL (Positionné sur l'oeil du fond) */
+        .eye-button {
+            position: absolute;
+            bottom: 125px; /* Ajusté pour monter sur l'oeil */
+            left: 200px;   /* Ajusté pour aller plus à droite sur l'oeil */
+            width: 75px;
+            height: 75px;
+            border: 1px solid #666;
+            padding: 2px;
+            z-index: 500;
+            background: rgba(255, 255, 255, 0.05);
+            transition: border-color 0.3s;
+        }
+
+        .eye-button:hover {
+            border-color: white;
+        }
+
+        .eye-button img {
+            width: 100%;
+            height: 100%;
+            display: block;
+            object-fit: cover;
+        }
+
+        /* LECTEUR CACHÉ */
+        audio {
+            position: absolute;
+            bottom: 150px;
+            left: 300px; /* Apparaît à droite de l'oeil */
+            filter: invert(100%);
+            display: none;
+            z-index: 600;
+        }
+    </style>
+</head>
+<body>
+
+    <img src="main.png" id="custom-cursor">
+
+    <img src="endcircle.png" class="center-image">
+
+    <a href="secret.html" class="secret-trigger">
+        <img src="boutonsecret.png">
+    </a>
+
+    <a href="index.html" class="back-link">back</a>
+
+    <div class="eye-button" id="toggle-audio">
+        <img src="oeil 4.png">
+    </div>
+
+    <audio id="player" controls>
+        <source src="endcircle.mp3" type="audio/mpeg">
+    </audio>
+
+    <script>
+        const cursor = document.getElementById('custom-cursor');
+        document.addEventListener('mousemove', e => {
+            cursor.style.display = 'block';
+            cursor.style.left = e.clientX + 'px';
+            cursor.style.top = e.clientY + 'px';
+        });
+
+        const eyeBtn = document.getElementById('toggle-audio');
+        const player = document.getElementById('player');
+        
+        eyeBtn.addEventListener('click', () => {
+            if (player.style.display === 'none' || player.style.display === '') {
+                player.style.display = 'block';
+            } else {
+                player.style.display = 'none';
+            }
+        });
+    </script>
+
+</body>
+</html>
